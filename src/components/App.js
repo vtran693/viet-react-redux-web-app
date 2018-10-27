@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Persons from './Persons/Persons';
 import Cockpit from './Cockpit/Cockpit';
 
-import PrimarySearchAppBar from './NavigationBar';
+import Home from '../containers/Home/Home';
 import './App.css';
 import NavigationBar from "../containers/NavigationBar/NavigationBar";
 
@@ -88,8 +88,11 @@ import NavigationBar from "../containers/NavigationBar/NavigationBar";
 const app = () => {
 
     return (
-        <NavigationBar/>
-        <Home/>
+        <div>
+            <NavigationBar/>
+            <Home/>
+        </div>
+
     )
 
 }

@@ -18,3 +18,12 @@ export const setVisibilityFilter = (filter) => ({
     type: actionTypes.SET_VISIBILITY_FILTER,
     payload: filter
 });
+
+export const addUser = userDetail => {
+    return {
+        type: actionTypes.ADD_USER,
+        payload: userDetail
+    }
+}
+
+

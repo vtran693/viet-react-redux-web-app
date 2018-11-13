@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
+import UserInfo from '../../components/UserInfo/UserInfo';
 
-import User
+import { connect } from 'react-redux';
 
 
 class Home extends Component {
@@ -15,7 +15,7 @@ class Home extends Component {
     render(){
         return (
 
-            <UserInfo />
+            <UserInfo UserInfo={this.props.users}/>
 
 
         )
@@ -28,4 +28,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect();
+export default connect(mapStateToProps)(Home);

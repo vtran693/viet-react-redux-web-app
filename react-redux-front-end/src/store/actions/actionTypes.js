@@ -9,6 +9,8 @@ export const TOGGLE_TODO = 'TOGGLE_TODO';
 
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
+export const ADD_USER = 'ADD_USER';
+
 /*
 * other constants
 */

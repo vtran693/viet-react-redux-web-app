@@ -8,8 +8,8 @@ const userInfo = (props) => {
 
     return (
         <div className="UserInfo">
-            Hello user {props.UserInfo.username}
-            Your name is {props.UserInfo.first} {props.UserInfo.last}
+            <p>Hello user {props.username}</p>
+            <p>Your name is {props.firstName} {props.lastName}</p>
         </div>
 
     )

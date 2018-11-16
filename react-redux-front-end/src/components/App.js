@@ -4,7 +4,9 @@ import Cockpit from './Cockpit/Cockpit';
 
 import Home from '../containers/Home/Home';
 import './App.css';
+import {BrowserRouter, Route} from 'react-router-dom';
 import NavigationBar from "../containers/NavigationBar/NavigationBar";
+import ListUsers from "../containers/ListUsers/ListUsers";
 
 // class App extends Component {
 //     state = {
@@ -88,10 +90,15 @@ import NavigationBar from "../containers/NavigationBar/NavigationBar";
 const app = () => {
 
     return (
-        <div>
-            <NavigationBar/>
-            <Home/>
-        </div>
+
+        <BrowserRouter>
+            <div className="App">
+                <NavigationBar/>
+
+                <Route path="/" exact component={Home} />
+                <Route path="/usersList" component={ListUsers} />
+            </div>
+        </BrowserRouter>
 
     )
 

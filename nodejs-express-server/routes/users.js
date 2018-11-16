@@ -1,12 +1,30 @@
 const express = require('express');
 const router = express.Router();
 
-let UserModel = require('../models/user').UserModel;
+let userModel = require('../models/user').UserModel;
 
 /* GET users listing. */
+
+// Get all users
+router.get('/', function(req, res, next){
+
+    userModel.find({}, (error, users) => {
+        if (error){
+            res.send('Error');
+        }
+        if (users != null) {
+            res.json(users);
+        }
+        else{
+            res.send('No User Found');
+        }
+    });
+});
+
+// Get user based on user id
 router.get('/:userId', function(req, res, next){
 
-    let userQuery  = UserModel.where(
+    let userQuery  = userModel.where(
         {userId : req.params.userId} );
 
     userQuery.findOne( (error, user) => {
@@ -17,17 +35,17 @@ router.get('/:userId', function(req, res, next){
 
       if (user != null){
           res.json({
-              Username: user.username,
-              First: user.first,
-              Last: user.last
+              username: user.username,
+              first: user.first,
+              last: user.last
           });
       }
       else{
         res.send('No User Found');
       }
     });
-
-
 });
+
+
 
 module.exports = router;

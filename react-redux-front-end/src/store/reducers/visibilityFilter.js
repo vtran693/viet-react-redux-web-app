@@ -1,8 +1,8 @@
 import * as actionTypes from '../actions/actionTypes'
+import {initialState} from "./index";
 
 
-
-const visibilityFilter = (state = {}, action) => {
+const visibilityFilter = (state = initialState, action) => {
 
     switch (action.type) {
 

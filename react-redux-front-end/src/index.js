@@ -17,7 +17,6 @@ const rootReducer = combineReducers({
     counters: counterReducer
 });
 
-
 const logger = state => {
     return next => {
         return action => {
@@ -29,9 +28,10 @@ const logger = state => {
     }
 }
 
-const store = createStore( rootReducer , applyMiddleware(logger, thunk));
-
-
+const store = createStore(
+    rootReducer ,
+    applyMiddleware(logger, thunk)
+);
 
 ReactDOM.render(
     <Provider store={store}>

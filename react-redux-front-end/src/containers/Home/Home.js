@@ -2,13 +2,34 @@ import React, { Component } from 'react';
 
 import UserInfo from '../../components/UserInfo/UserInfo';
 
-import ListUsers from '../ListUsers/ListUsers';
-
 import * as actionCreators from '../../store/actions/index';
 
 import { connect } from 'react-redux';
 
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import PropTypes from 'prop-types';
+
+import { withStyles } from '@material-ui/core/styles';
+
+import Paper from '@material-ui/core/Paper';
+
+import Grid from '@material-ui/core/Grid';
+import { Button } from '@material-ui/core';
+
+const styles = theme => ({
+    button: {
+        margin: theme.spacing.unit,
+    },
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing.unit * 2,
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+  });
 
 class Home extends Component {
 
@@ -27,6 +48,7 @@ class Home extends Component {
 
 
     render(){
+        const { classes } = this.props;
         return (
             <div className="Home">
 
@@ -48,6 +70,25 @@ class Home extends Component {
                     firstName = {this.props.users.first}
                     lastName = {this.props.users.last}
                 />
+
+
+                <Grid container spacing={12}>
+                    <Grid item xs={5}></Grid>
+                    <Grid item xs={1}>
+                  
+                        <Link to={'/menu'}>
+                            <Button variant="contained" className={classes.button}>Go To Menu</Button>
+                        </Link>
+                   
+                    </Grid>
+                    <Grid item xs={1}>
+                    
+                        <Button variant="contained" className={classes.button}>Build Your Own Dish</Button>
+                    
+                    </Grid>
+                    <Grid item xs={5}></Grid>
+                </Grid>
+
 
             </div>
 
@@ -71,4 +112,4 @@ const mapDispatchToProps = dispatch => {
         onIncrementCounter: () => dispatch(actionCreators.incrementCounter())
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Home));

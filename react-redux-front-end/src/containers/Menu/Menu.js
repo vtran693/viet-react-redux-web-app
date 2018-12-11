@@ -18,7 +18,7 @@ import Grid from '@material-ui/core/Grid';
 import { Button } from '@material-ui/core';
 
 
-const axis = require('axios');
+const axios = require('axios');
 
 const styles = theme => ({
     button: {
@@ -39,8 +39,23 @@ const styles = theme => ({
 
 class Menu extends Component{
 
-    componentDidMount(){
+    state = {
+        menus : []
+    }
 
+    componentDidMount(){
+        axios.get('http://localhost:8080/menu')
+        .then ( response => {
+            const allMenus = response.data.map(menu => {
+                return menu;
+            });
+
+            this.setState({menus: allMenus});
+        })
+        .catch (error =>{
+            console.log('[ERROR] from ListUsers fetch', error);
+        })
+    ;
     }
 
     render(){

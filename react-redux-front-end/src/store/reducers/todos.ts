@@ -1,7 +1,8 @@
 import * as actionTypes from '../actions/actionTypes'
 import { initialState } from './index';
+import {AppAction} from "../../interfaces/ReduxStoreInterface";
 
-const todos = (state = initialState, action) => {
+const todos = (state = initialState, action: AppAction) => {
 
     switch (action.type) {
 

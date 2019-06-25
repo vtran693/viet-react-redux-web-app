@@ -1,6 +1,5 @@
+// Import all named exports onto an object named React
 import * as React from 'react';
-
-import { Component } from 'react';
 
 import UserInfo from '../../components/UserInfo/UserInfo';
 
@@ -9,30 +8,9 @@ import * as actionCreators from '../../store/actions/index';
 import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
+import { HomeProps } from '../../interfaces/ComponentInterface';
 
-import { withStyles } from '@material-ui/core/styles';
-
-import Paper from '@material-ui/core/Paper';
-
-import Grid from '@material-ui/core/Grid';
-import { Button } from '@material-ui/core';
-
-const styles = theme => ({
-    button: {
-        margin: theme.spacing.unit,
-    },
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing.unit * 2,
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  });
-
-class Home extends Component {
-
+class Home extends React.Component<HomeProps, any> {
 
 /*
     constructor(props){
@@ -46,9 +24,7 @@ class Home extends Component {
     }
 */
 
-
     render(){
-        const { classes } = this.props;
         return (
             <div className="Home">
 
@@ -71,34 +47,14 @@ class Home extends Component {
                     lastName = {this.props.users.last}
                 />
 
-
-                <Grid container spacing={12}>
-                    <Grid item xs={5}></Grid>
-                    <Grid item xs={1}>
-                  
-                        <Link to={'/menu'}>
-                            <Button variant="contained" className={classes.button}>Go To Menu</Button>
-                        </Link>
-                   
-                    </Grid>
-                    <Grid item xs={1}>
-                    
-                        <Button variant="contained" className={classes.button}>Build Your Own Dish</Button>
-                    
-                    </Grid>
-                    <Grid item xs={5}></Grid>
-                </Grid>
-
-
             </div>
-
         )
     }
 }
 
 
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
     return {
         users : state.todos,
         filters: state.visibilityFilter,
@@ -106,10 +62,11 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch: any) => {
     return{
         loadUserInfo: () => dispatch(actionCreators.loadUserAPI("1")),
         onIncrementCounter: () => dispatch(actionCreators.incrementCounter())
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Home));
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,8 +1,8 @@
 import * as actionTypes from '../actions/actionTypes'
-import {initialState} from "./index";
+import { initialState } from "./index";
+import { AppAction } from '../../interfaces/ReduxStoreInterface';
 
-
-const visibilityFilter = (state = initialState, action) => {
+const visibilityFilter = (state = initialState, action: AppAction) => {
 
     switch (action.type) {
 

@@ -17,9 +17,9 @@ const rootReducer = combineReducers({
     counters: counterReducer
 });
 
-const logger = state => {
-    return next => {
-        return action => {
+const logger = (state: any) => {
+    return (next: any) => {
+        return (action: any) => {
             console.log('[Middleware] Dispatching action', action);
             const result = next(action);
             console.log('[Middleware] Next State', state.getState());

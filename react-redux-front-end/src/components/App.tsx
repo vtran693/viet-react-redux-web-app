@@ -4,8 +4,9 @@ import * as React from 'react';
 
 import Home from '../containers/Home/Home';
 import './App.css';
-import {BrowserRouter, Route} from 'react-router-dom';
-import NavigationBar from "../containers/NavigationBar/NavigationBar";
+
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+
 import ListUsers from "../containers/ListUsers/ListUsers";
 
 // class App extends Component {
@@ -90,16 +91,15 @@ import ListUsers from "../containers/ListUsers/ListUsers";
 const app = () => {
 
     return (
-
-        <BrowserRouter>
-            <div className="App">
-                <NavigationBar/>
-
-                <Route path="/" exact component={Home} />
-                <Route path="/usersList" component={ListUsers} />
-            </div>
-        </BrowserRouter>
-
+        <div className="App">
+            <BrowserRouter>
+                <Switch>
+                    <Route path="/usersList" component={ListUsers} />
+                    <Route exact path="/" component={Home} />
+                    <Redirect from='*' to='/' />
+                </Switch>
+            </BrowserRouter>
+        </div>
     )
 
 }

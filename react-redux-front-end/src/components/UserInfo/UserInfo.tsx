@@ -9,7 +9,7 @@ const userInfo = (props: UserInfoProps) => {
 
     return (
         <div className="UserInfo">
-            <p>Hello user {props.username}</p>
+            <p>Hello userId - {props.userId} - user {props.username}</p>
             <p>Your name is {props.firstName} {props.lastName}</p>
         </div>
 

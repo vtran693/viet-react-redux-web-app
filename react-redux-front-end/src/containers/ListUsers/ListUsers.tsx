@@ -3,36 +3,34 @@ import * as React from 'react';
 import { Route, Link} from "react-router-dom";
 import Home from '../Home/Home';
 import { User } from '../../interfaces/ComponentInterface';
+import { connect } from 'react-redux';
 
 class ListUsers extends React.Component<any, any> {
-    state = {
-        users: []
-    }
 
-    componentDidMount (){
-        const axios = require('axios');
-        axios.get('http://localhost:8080/users')
-            .then ( (response: any) => {
-                const allUsers = response.data.map( (user: User) => {
-                    return user;
-                });
+    // componentDidMount (){
+    //     const axios = require('axios');
+    //     axios.get('http://localhost:8080/users')
+    //         .then ( (response: any) => {
+    //             const allUsers = response.data.map( (user: User) => {
+    //                 return user;
+    //             });
 
-                this.setState({users: allUsers});
-            })
-            .catch ( (error: any) =>{
-                console.log('[ERROR] from ListUsers fetch', error);
-            })
-        ;
-    }
+    //             this.setState({users: allUsers});
+    //         })
+    //         .catch ( (error: any) =>{
+    //             console.log('[ERROR] from ListUsers fetch', error);
+    //         })
+    //     ;
+    // }
 
     render(){
-        let listUsers = this.state.users.map ( (user: User) => {
+        let listUsers = this.props.usersCourses.users.map ( (user: User) => {
             return (
                 <div key={user.userId}>
                     <h3>username: {user.username}</h3>
                     <ul>
-                        <li>First Name: {user.first}</li>
-                        <li>Last Name: {user.last}</li>
+                        <li>First Name: {user.firstName}</li>
+                        <li>Last Name: {user.lastName}</li>
                     </ul>
                 </div>
             )
@@ -51,4 +49,10 @@ class ListUsers extends React.Component<any, any> {
     }
 }
 
-export default ListUsers;
+export const mapStateToProps = (state: any) => {
+    return {
+        usersCourses: state.usersCourses
+    }
+}
+
+export default connect(mapStateToProps, null)(ListUsers);

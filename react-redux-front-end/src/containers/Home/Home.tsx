@@ -24,6 +24,10 @@ class Home extends React.Component<HomeProps, any> {
     }
 */
 
+    componentDidMount(){
+        this.props.onInitialStateLoad();
+    }
+
     render(){
         return (
             <div className="Home">
@@ -36,15 +40,16 @@ class Home extends React.Component<HomeProps, any> {
 
                     </nav>
                 </header>
-                <button onClick={this.props.loadUserInfo}>Click Me</button>
+                <button onClick={() => this.props.onLoadUserInfo()}>Retrieve Your Information</button>
                 <button onClick={() => this.props.onIncrementCounter()}>Increment Counter</button>
-
+                <button onClick={() => this.props.onResetStore()}>Reset Store</button>
                 <p>Your Current Counter is: {this.props.counters.currentCounter}</p>
                 <p>Your Previous Counter is: {this.props.counters.previousCounter}</p>
                 <UserInfo
-                    username={this.props.users.username}
-                    firstName = {this.props.users.first}
-                    lastName = {this.props.users.last}
+                    userId={this.props.users.currentUser.userId}
+                    username={this.props.users.currentUser.username}
+                    firstName = {this.props.users.currentUser.firstName}
+                    lastName = {this.props.users.currentUser.lastName}
                 />
 
             </div>
@@ -58,14 +63,17 @@ const mapStateToProps = (state: any) => {
     return {
         users : state.todos,
         filters: state.visibilityFilter,
-        counters: state.counters
+        counters: state.counters,
+        usersCourses: state.usersCourses
     }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
-    return{
-        loadUserInfo: () => dispatch(actionCreators.loadUserAPI("1")),
-        onIncrementCounter: () => dispatch(actionCreators.incrementCounter())
+    return {
+        onLoadUserInfo: () => dispatch(actionCreators.loadUserAPI("1")),
+        onIncrementCounter: () => dispatch(actionCreators.incrementCounter()),
+        onInitialStateLoad: () => dispatch(actionCreators.loadInitialStateAPI()),
+        onResetStore: () => dispatch(actionCreators.resetStore())
     }
 }
 

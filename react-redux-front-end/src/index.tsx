@@ -9,12 +9,14 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import todosReducer from "./store/reducers/todos";
 import visibilityFilterReducer from "./store/reducers/visibilityFilter";
-import counterReducer from "./store/reducers/counters"
+import counterReducer from "./store/reducers/counters";
+import usersCoursesReducer from "./store/reducers/usersCourses";
 
 const rootReducer = combineReducers({
     todos: todosReducer,
     visibilityFilter: visibilityFilterReducer,
-    counters: counterReducer
+    counters: counterReducer,
+    usersCourses: usersCoursesReducer
 });
 
 const logger = (state: any) => {

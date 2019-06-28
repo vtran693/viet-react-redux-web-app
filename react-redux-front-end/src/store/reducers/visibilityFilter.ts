@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes'
-import { initialState } from "./index";
+import { initialState } from "./initialStates";
 import { AppAction } from '../../interfaces/ReduxStoreInterface';
 
 const visibilityFilter = (state = initialState, action: AppAction) => {

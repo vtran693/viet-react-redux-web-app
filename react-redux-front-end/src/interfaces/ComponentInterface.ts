@@ -1,28 +1,41 @@
 import { string } from "prop-types";
 
+
+export interface InitialState {
+    currentUser: User;
+    users: Array<User>;
+    courses: Array<Course>;
+}
+
 export interface UserInfoProps {
+    userId: string;
     username: string;
     firstName: string;
     lastName: string;
 }
 
 export interface HomeProps {
-    loadUserInfo: () => void;
+    onLoadUserInfo: () => void;
     onIncrementCounter: () => void;
-    counters: Counters;
-    users: User;
+    onInitialStateLoad: () => void;
+    onResetStore: () => void;
+    counters: Counter;
+    users: InitialState;
 }
 
 export interface User {
     userId: string;
     username: string;
-    first: string;
-    last: string; 
+    firstName: string;
+    lastName: string; 
 }
 
+export interface Course { 
+    courseName: string;
+    courseCode: string;
+}
 
-
-export interface Counters {
+export interface Counter {
     previousCounter: number;
     currentCounter: number;
 }

@@ -14,3 +14,6 @@ OR
 
 Tasks
 - Convert pom.xml to build.gradle - Viet
+- Improvise interface definitions - Viet & Khiem
+- Use hooks in place of HOC connect() for future components/containers - Viet & Khiem
+- Create rootReducer as a separate file - Khiem

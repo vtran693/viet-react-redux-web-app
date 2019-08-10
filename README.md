@@ -2,6 +2,10 @@
 "# viet-react-redux-web-app" 
 "# viet-react-redux-web-app" 
 
+Schedules:
+- Monday + Wednesday: 8 - 8:15 p.m. 
+- Friday (at the dinner table) around 7 p.m.
+
 Tech Stacks:
 - Frontend: React Redux
 - Backend: SpringBoot + Hibernate (complex logic)
